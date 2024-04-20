@@ -11,11 +11,14 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('cliente', function (Blueprint $table) {
+        Schema::create('enderecos', function (Blueprint $table) {
             $table->id();
-            $table->string('nomeCompleto', 64);
-            $table->string('cpf', 11);
-            $table->date('dataDeNascimento');
+            $table->string('logradouro', 32);
+            $table->string('cidade', 32);
+            $table->string('bairro', 32);
+            $table->integer('numero');
+            $table->string('cep', 8);
+            $table->string('complemento', 128);
             $table->timestamps();
         });
     }
@@ -25,6 +28,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('cliente');
+        Schema::dropIfExists('endereco');
     }
 };
