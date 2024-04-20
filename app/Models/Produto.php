@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class Produto extends Model
 {
@@ -17,9 +18,8 @@ class Produto extends Model
     protected $descricao;
     protected $dataDeCadastro;
     protected $peso;
-    protected $categoria_id;
-    protected function categoria(): void
+    protected function categoria(): BelongsTo
     {
-        $this->belongsTo(Categoria::class);
+        return $this->belongsTo(Categoria::class);
     }
 }
