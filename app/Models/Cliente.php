@@ -15,7 +15,7 @@ class Cliente extends Model
     protected $cpf;
     protected $dataDeNascimento;
 
-    protected function edereco() : HasMany
+    protected function endereco(): HasMany
     {
         return $this->hasMany(Endereco::class); 
     }
