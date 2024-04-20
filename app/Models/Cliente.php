@@ -11,8 +11,7 @@ class Cliente extends Model
     use HasFactory;
     protected $table = 'clientes';
     protected $primaryKey = 'id';
-    protected $nome;
-    protected $sobrenome;
+    protected $nomeCompleto;
     protected $cpf;
     protected $dataDeNascimento;
 
