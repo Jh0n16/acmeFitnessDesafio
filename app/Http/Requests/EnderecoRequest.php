@@ -11,7 +11,7 @@ class EnderecoRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return false;
+        return true;
     }
 
     /**
@@ -49,8 +49,8 @@ class EnderecoRequest extends FormRequest
             'cep.required' => 'O CEP é obrigatório!',
             'cep.max' => 'O tamanho máximo para um CEP é 8 digitos!',
 
-            'complemeto.required' => 'O complemento é obrigatório!',
-            'complemeto.max' => 'O complemento tem um tamanho máximo de 128 caracteres!',
+            'complemento.required' => 'O complemento é obrigatório!',
+            'complemento.max' => 'O complemento tem um tamanho máximo de 128 caracteres!',
         ];
     }
 }
