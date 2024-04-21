@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\ClienteRequest;
 use App\Models\Cliente;
 use Illuminate\Http\Request;
 
@@ -18,7 +19,7 @@ class ClienteController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(ClienteRequest $request)
     {
         return Cliente::create([
             'nomeCompleto' => $request->input('nomeCompleto'),
@@ -38,7 +39,7 @@ class ClienteController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(ClienteRequest $request, string $id)
     {
         return Cliente::find($id)->update([
             'nomeCompleto' => $request->input('nomeCompleto'),
