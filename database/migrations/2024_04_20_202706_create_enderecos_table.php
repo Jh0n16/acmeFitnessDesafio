@@ -19,6 +19,8 @@ return new class extends Migration
             $table->integer('numero');
             $table->string('cep', 8);
             $table->string('complemento', 128);
+            $table->foreignId('cliente_id');
+            $table->foreign('cliente_id')->references('id')->on('clientes')->onDelete('CASCADE');
             $table->timestamps();
         });
     }
