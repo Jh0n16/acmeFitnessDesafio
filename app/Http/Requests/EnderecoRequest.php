@@ -28,7 +28,7 @@ class EnderecoRequest extends FormRequest
             'numero' => 'required|max:4',
             'cep' => 'required|max:8',
             'complemento' => 'required|max:128',
-            'cliente_id' => 'required',
+            'cliente_id' => 'required|integer',
         ];
     }
 
@@ -53,7 +53,8 @@ class EnderecoRequest extends FormRequest
             'complemento.required' => 'O complemento é obrigatório!',
             'complemento.max' => 'O complemento tem um tamanho máximo de 128 caracteres!',
 
-            'cliente_id.required' => 'O id do Cliente que possui esse endereço é obrigatório!'
+            'cliente_id.required' => 'O id do Cliente que possui esse endereço é obrigatório!',
+            'cliente_id.integer' => 'O id do Cliente deve ser um número!'
         ];
     }
 }
