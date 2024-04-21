@@ -11,9 +11,7 @@ class Cliente extends Model
     use HasFactory;
     protected $table = 'clientes';
     protected $primaryKey = 'id';
-    protected $nomeCompleto;
-    protected $cpf;
-    protected $dataDeNascimento;
+    protected $fillable = ['nomeCompleto', 'cpf', 'dataDeNascimento'];
 
     protected function endereco(): HasMany
     {

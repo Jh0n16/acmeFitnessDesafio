@@ -20,7 +20,11 @@ class ClienteController extends Controller
      */
     public function store(Request $request)
     {
-        return Cliente::create($request->all());;
+        return Cliente::create([
+            'nomeCompleto' => $request->input('nomeCompleto'),
+            'cpf' => $request->input('cpf'),
+            'dataDeNascimento' => $request->input('dataDeNascimento'),
+        ]);;
     }
 
     /**
@@ -36,7 +40,11 @@ class ClienteController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        return response("Rota funcionando");
+        return Cliente::find($id)->update([
+            'nomeCompleto' => $request->input('nomeCompleto'),
+            'cpf' => $request->input('cpf'),
+            'dataDeNascimento' => $request->input('dataDeNascimento'),
+        ]);
     }
 
     /**
@@ -44,6 +52,6 @@ class ClienteController extends Controller
      */
     public function destroy(string $id)
     {
-        response("Rota funcionando");
+        return Cliente::destroy($id);
     }
 }
