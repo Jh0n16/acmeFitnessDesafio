@@ -17,7 +17,8 @@ class Endereco extends Model
         'bairro',
         'numero',
         'cep',
-        'complemento'
+        'complemento',
+        'cliente_id'
     ];
     
     protected function cliente(): BelongsTo

@@ -27,7 +27,8 @@ class EnderecoController extends Controller
             'bairro' => $request->input('bairro'),
             'numero' => $request->input('numero'),
             'cep' => $request->input('cep'),
-            'complemento' => $request->input('complemento')
+            'complemento' => $request->input('complemento'),
+            'cliente_id' => $request->input('cliente_id')
         ]);
     }
 
@@ -50,7 +51,8 @@ class EnderecoController extends Controller
             'bairro' => $request->input('bairro'),
             'numero' => $request->input('numero'),
             'cep' => $request->input('cep'),
-            'complemento' => $request->input('complemento')
+            'complemento' => $request->input('complemento'),
+            'cliente_id' => $request->input('cliente_id')
         ]);
     }
 
