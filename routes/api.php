@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\CategoriaController;
 use App\Http\Controllers\ClienteController;
 use App\Http\Controllers\EnderecoController;
 use Illuminate\Http\Request;
@@ -22,3 +23,11 @@ Route::post('endereco/', [EnderecoController::class, 'store'])->name('endereco.s
 Route::get('endereco/{endereco}', [EnderecoController::class, 'show'])->name('endereco.show');
 Route::put('endereco/{endereco}', [EnderecoController::class, 'update'])->name('endereco.update');
 Route::delete('endereco/{endereco}', [EnderecoController::class, 'destroy'])->name('endereco.destroy');
+
+// Categorias
+Route::get('categoria/', [CategoriaController::class, 'index'])->name('categoria.index');
+Route::post('categoria/', [CategoriaController::class, 'store'])->name('categoria.store');
+Route::get('categoria/{categoria}', [CategoriaController::class, 'show'])->name('categoria.show');
+Route::put('categoria/{categoria}', [CategoriaController::class, 'update'])->name('categoria.update');
+Route::delete('categoria/{categoria}', [CategoriaController::class, 'destroy'])->name('categoria.destroy');
+
