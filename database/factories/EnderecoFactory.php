@@ -17,13 +17,13 @@ class EnderecoFactory extends Factory
     public function definition(): array
     {
         return [
-            'logradouro' => $this->faker->address(),
+            'logradouro' => $this->faker->streetAddress(),
             'cidade' => $this->faker->city(),
-            'bairro' => $this->faker->locale(),
+            'bairro' => $this->faker->streetName(),
             'numero' => $this->faker->buildingNumber(),
-            'cep' => $this->faker->postcode(),
+            'cep' => str_replace('-','', $this->faker->postcode()),
             'complemento' => $this->faker->text(32),
-            'cliente_id' => $this->faker->numberBetween(0, 15)
+            'cliente_id' => $this->faker->numberBetween(1, 15)
         ];
     }
 }

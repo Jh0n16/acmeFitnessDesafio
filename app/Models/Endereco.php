@@ -9,7 +9,7 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 class Endereco extends Model
 {
     use HasFactory;
-    protected $table = 'endereco';
+    protected $table = 'enderecos';
     protected $primaryKey = 'id';
     protected $fillable = [
         'logradouro',
