@@ -11,12 +11,15 @@ class Endereco extends Model
     use HasFactory;
     protected $table = 'endereco';
     protected $primaryKey = 'id';
-    protected $logradouro;
-    protected $cidade;
-    protected $bairro;
-    protected $numero;
-    protected $cep;
-    protected $complemento;
+    protected $fillable = [
+        'logradouro',
+        'cidade',
+        'bairro',
+        'numero',
+        'cep',
+        'complemento'
+    ];
+    
     protected function cliente(): BelongsTo
     {
         return $this->belongsTo(Cliente::class);
