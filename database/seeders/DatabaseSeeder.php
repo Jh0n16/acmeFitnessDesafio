@@ -17,6 +17,7 @@ class DatabaseSeeder extends Seeder
             EnderecoSeeder::class,
             CategoriaSeeder::class,
             ProdutoSeeder::class,
+            EstoqueSeeder::class,
         ]); 
     }
 }
