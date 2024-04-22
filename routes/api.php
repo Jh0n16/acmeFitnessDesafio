@@ -3,6 +3,7 @@
 use App\Http\Controllers\CategoriaController;
 use App\Http\Controllers\ClienteController;
 use App\Http\Controllers\EnderecoController;
+use App\Http\Controllers\ProdutoController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -31,3 +32,9 @@ Route::get('categoria/{categoria}', [CategoriaController::class, 'show'])->name(
 Route::put('categoria/{categoria}', [CategoriaController::class, 'update'])->name('categoria.update');
 Route::delete('categoria/{categoria}', [CategoriaController::class, 'destroy'])->name('categoria.destroy');
 
+// Produtos
+Route::get('produto/', [ProdutoController::class, 'index'])->name('produto.index');
+Route::post('produto/', [ProdutoController::class, 'store'])->name('produto.store');
+Route::get('produto/{produto}', [ProdutoController::class, 'show'])->name('produto.show');
+Route::put('produto/{produto}', [ProdutoController::class, 'update'])->name('produto.update');
+Route::delete('produto/{produto}', [ProdutoController::class, 'destroy'])->name('produto.destroy');
