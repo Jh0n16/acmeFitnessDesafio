@@ -41,7 +41,7 @@ class ClienteController extends Controller
      */
     public function update(ClienteRequest $request, string $id)
     {
-        return Cliente::find($id)->update([
+        return Cliente::findOrFail($id)->update([
             'nomeCompleto' => $request->input('nomeCompleto'),
             'cpf' => $request->input('cpf'),
             'dataDeNascimento' => $request->input('dataDeNascimento'),
