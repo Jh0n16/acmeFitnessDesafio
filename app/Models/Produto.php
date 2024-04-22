@@ -18,6 +18,7 @@ class Produto extends Model
         'preco',
         'descricao',
         'peso',
+        'categoria_id',
     ];
 
     protected function categoria(): BelongsTo
