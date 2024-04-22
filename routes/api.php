@@ -3,6 +3,7 @@
 use App\Http\Controllers\CategoriaController;
 use App\Http\Controllers\ClienteController;
 use App\Http\Controllers\EnderecoController;
+use App\Http\Controllers\EstoqueController;
 use App\Http\Controllers\ProdutoController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -38,3 +39,10 @@ Route::post('produto/', [ProdutoController::class, 'store'])->name('produto.stor
 Route::get('produto/{produto}', [ProdutoController::class, 'show'])->name('produto.show');
 Route::put('produto/{produto}', [ProdutoController::class, 'update'])->name('produto.update');
 Route::delete('produto/{produto}', [ProdutoController::class, 'destroy'])->name('produto.destroy');
+
+// Estoques
+Route::get('estoque/', [EstoqueController::class, 'index'])->name('estoque.index');
+Route::post('estoque/', [EstoqueController::class, 'store'])->name('estoque.store');
+Route::get('estoque/{estoque}', [EstoqueController::class, 'show'])->name('estoque.show');
+Route::put('estoque/{estoque}', [EstoqueController::class, 'update'])->name('estoque.update');
+Route::delete('estoque/{estoque}', [EstoqueController::class, 'destroy'])->name('estoque.destroy');
