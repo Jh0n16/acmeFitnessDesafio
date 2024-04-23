@@ -1,4 +1,5 @@
 Considerações:
+
     - A versão do PHP utilizada foi a 8.3 e a versão do Laravel foi a 11
     - Utilizei um banco de dados do tipo sqlite por ser mais leve e rápido para os testes
     - Existem factories que populam o banco de dados atomaticamente (exceto para as vendas), para ativa-las basta digitar o comando php artisan db:seed
@@ -6,6 +7,7 @@ Considerações:
     - Para criar o banco de dados pela primeira vez basta digitar php artisan migrate
 
 As rotas da API são:
+
     Clientes => 
         (GET) http://localhost:8000/api/cliente/ -> Lista todos os clientes
         (POST) http://localhost:8000/api/cliente/ -> Adiciona novos clientes
@@ -50,6 +52,7 @@ As rotas da API são:
         (GET) http://localhost:8000/api/produtosMaisVendidos/ -> Lista os produtos mais vendidos
 
 Os campos esperados nas rotas POST e PUT são:
+
     Clientes =>
         'nomeCompleto' -> String
         'cpf' -> String
