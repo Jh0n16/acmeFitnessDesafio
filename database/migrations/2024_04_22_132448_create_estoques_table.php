@@ -14,6 +14,7 @@ return new class extends Migration
         Schema::create('estoques', function (Blueprint $table) {
             $table->id();
             $table->string('tamanho', 3);
+            $table->float('precoDeVenda', 2);
             $table->integer('quantidadeDoEstoque');
             $table->foreignId('produto_id');
             $table->foreign('produto_id')->references('id')->on('produtos')->onDelete('CASCADE');

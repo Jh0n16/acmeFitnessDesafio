@@ -18,6 +18,7 @@ class EstoqueFactory extends Factory
     {
         return [
             'tamanho' => $this->faker->randomElement(['P', 'M', 'G', 'GG', 'XGG']),
+            'precoDeVenda' => $this->faker->randomFloat(2, 0, 60),
             'quantidadeDoEstoque' => $this->faker->randomNumber(3),
             'produto_id' => $this->faker->numberBetween(1, 10),
         ];
