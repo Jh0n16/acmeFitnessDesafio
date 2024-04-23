@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\VendaRequest;
 use App\Models\Estoque;
+use App\Models\EstoqueVenda;
 use App\Models\Venda;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Http\Request;
@@ -31,7 +32,7 @@ class VendaController extends Controller
         
         $desconto = $this->calculaDesconto($request->input('formaDePagamento'), $totalDoPedido);
 
-        Venda::create([
+        $venda = Venda::create([
             'dataDaVenda' => $request->input('dataDaVenda'),
             'variacoesDosProdutos' => $request->input('variacoesDosProdutos'),
             'valorTotal' => round($totalDoPedido - $desconto, 2),
@@ -46,6 +47,10 @@ class VendaController extends Controller
             $estoque = Estoque::findOrFail($item['estoque_id']);
 
             $this->atualizaEstoque($estoque, $item['quantidade']);
+            EstoqueVenda::create([
+                'venda_id' => $venda->id,
+                'estoque_id' => $estoque->id
+            ]);
         }
 
         return json_encode(["mensagem"=> "Venda criada com sucesso!"]);
@@ -83,12 +88,6 @@ class VendaController extends Controller
             'cliente_id' => $request->input('cliente_id'),
             'endereco_id' => $request->input('endereco_id'),
         ]);
-
-        foreach ($itensDoPedido as $item) {
-            $estoque = Estoque::findOrFail($item['estoque_id']);
-
-            $this->atualizaEstoque($estoque, $item['quantidade']);
-        }
 
         return json_encode(["mensagem"=> "Venda modificada com sucesso!"]);
 

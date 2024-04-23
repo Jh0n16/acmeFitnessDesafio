@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 
 class Estoque extends Model
 {
@@ -22,5 +23,10 @@ class Estoque extends Model
     protected function produto(): BelongsTo
     {
         return $this->belongsTo(Produto::class);
+    }
+
+    protected function vendas(): BelongsToMany
+    {
+        return $this->belongsToMany(Venda::class);
     }
 }
