@@ -20,7 +20,7 @@ class ProdutoFactory extends Factory
             'nome' => $this->faker->word(),
             'cor' => $this->faker->colorName(),
             'imagem' => $this->faker->image(),
-            'preco' => $this->faker->randomFloat(2),
+            'preco' => $this->faker->randomFloat(2, 0, 20),
             'descricao' => $this->faker->text(128),
             'peso' => $this->faker->randomFloat(2, 0, 1),
             'categoria_id' => $this->faker->numberBetween(1, 5),
