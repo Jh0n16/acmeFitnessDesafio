@@ -14,6 +14,7 @@ class Estoque extends Model
     protected $primaryKey = 'id';
     protected $fillable = [
         'tamanho',
+        'precoDeVenda',
         'quantidadeDoEstoque',
         'produto_id',
     ];

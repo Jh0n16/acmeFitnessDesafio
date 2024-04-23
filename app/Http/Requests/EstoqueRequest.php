@@ -23,6 +23,7 @@ class EstoqueRequest extends FormRequest
     {
         return [
             'tamanho' => 'required|max:3',
+            'precoDeVenda' => 'required|decimal:0,2',
             'quantidadeDoEstoque' => 'required|integer',
             'produto_id' => 'required|integer'
         ];
@@ -33,7 +34,10 @@ class EstoqueRequest extends FormRequest
         return [
             'tamanho.required' => 'O tamanho da variação do produto é obrigatória!',
             'tamanho.max' => 'O tamanho da variação do produto deve ter no máximo 3 caracteres!',
-
+            
+            'precoDeVenda.required' => 'O preço de venda do produto é obrigatório!',
+            'precoDeVenda.decimal' => 'O preço de venda do produto deve ser um número decimal!',
+            
             'quantidadeDoEstoque.required' => 'A quantidade do estoque é obrigatória!',
             'quantidadeDoEstoque.integer' => 'A quantidade do estoque deve ser um número inteiro!',
 
