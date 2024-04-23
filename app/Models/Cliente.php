@@ -11,11 +11,20 @@ class Cliente extends Model
     use HasFactory;
     protected $table = 'clientes';
     protected $primaryKey = 'id';
-    protected $fillable = ['nomeCompleto', 'cpf', 'dataDeNascimento'];
+    protected $fillable = [
+        'nomeCompleto', 
+        'cpf', 
+        'dataDeNascimento'
+    ];
 
     protected function endereco(): HasMany
     {
         return $this->hasMany(Endereco::class); 
+    }
+
+    protected function venda(): HasMany
+    {
+        return $this->hasMany(Venda::class);
     }
 
 }
