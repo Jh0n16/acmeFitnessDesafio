@@ -23,6 +23,7 @@ class EstoqueController extends Controller
     {
         return Estoque::created([
             'tamanho' => $request->input('tamanho'),
+            'precoDeVenda' => $request->input('precoDeVenda'),
             'quantidadeDoEstoque' => $request->input('quantidadeDoEstoque'),
             'produto_id' => $request->input('produto_id')
         ]);
@@ -43,6 +44,7 @@ class EstoqueController extends Controller
     {
         return Estoque::findOrFail($id)->update([
             'tamanho' => $request->input('tamanho'),
+            'precoDeVenda' => $request->input('precoDeVenda'),
             'quantidadeDoEstoque' => $request->input('quantidadeDoEstoque'),
             'produto_id' => $request->input('produto_id')
         ]);
