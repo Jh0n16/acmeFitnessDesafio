@@ -21,7 +21,7 @@ class ProdutoController extends Controller
      */
     public function store(ProdutoRequest $request)
     {
-        return Produto::create([
+        Produto::create([
             'nome' => $request->input('nome'),
             'cor' => $request->input('cor'),
             'imagem' => $request->input('imagem'),
@@ -30,6 +30,9 @@ class ProdutoController extends Controller
             'peso' => $request->input('peso'),
             'categoria_id' => $request->input('categoria_id'),
         ]);
+
+        return json_encode(["mensagem"=> "Produto criado com sucesso!"]);
+
     }
 
     /**
@@ -45,7 +48,7 @@ class ProdutoController extends Controller
      */
     public function update(ProdutoRequest $request, string $id)
     {
-        return Produto::findOrFail($id)->update([
+        Produto::findOrFail($id)->update([
             'nome' => $request->input('nome'),
             'cor' => $request->input('cor'),
             'imagem' => $request->input('imagem'),
@@ -54,6 +57,9 @@ class ProdutoController extends Controller
             'peso' => $request->input('peso'),
             'categoria_id' => $request->input('categoria_id'),
         ]);
+
+        return json_encode(["mensagem"=> "Produto modificado com sucesso!"]);
+
     }
 
     /**
@@ -61,7 +67,10 @@ class ProdutoController extends Controller
      */
     public function destroy(string $id)
     {
-        return Produto::destroy($id);
+        Produto::destroy($id);
+
+        return json_encode(["mensagem"=> "Produto deletado com sucesso!"]);
+
     }
 }
 

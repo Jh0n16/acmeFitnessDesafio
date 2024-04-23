@@ -21,12 +21,15 @@ class EstoqueController extends Controller
      */
     public function store(EstoqueRequest $request)
     {
-        return Estoque::created([
+        Estoque::created([
             'tamanho' => $request->input('tamanho'),
             'precoDeVenda' => $request->input('precoDeVenda'),
             'quantidadeDoEstoque' => $request->input('quantidadeDoEstoque'),
             'produto_id' => $request->input('produto_id')
         ]);
+
+        return json_encode(["mensagem"=> "Estoque criado com sucesso!"]);
+
     }
 
     /**
@@ -42,12 +45,15 @@ class EstoqueController extends Controller
      */
     public function update(EstoqueRequest $request, string $id)
     {
-        return Estoque::findOrFail($id)->update([
+        Estoque::findOrFail($id)->update([
             'tamanho' => $request->input('tamanho'),
             'precoDeVenda' => $request->input('precoDeVenda'),
             'quantidadeDoEstoque' => $request->input('quantidadeDoEstoque'),
             'produto_id' => $request->input('produto_id')
         ]);
+
+        return json_encode(["mensagem"=> "Estoque modificado com sucesso!"]);
+
     }
 
     /**
@@ -55,6 +61,9 @@ class EstoqueController extends Controller
      */
     public function destroy(string $id)
     {
-        return Estoque::destroy($id);
+        Estoque::destroy($id);
+
+        return json_encode(["mensagem"=> "Estoque deletado com sucesso!"]);
+
     }
 }

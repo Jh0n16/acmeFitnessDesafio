@@ -47,6 +47,9 @@ class VendaController extends Controller
 
             $this->atualizaEstoque($estoque, $item['quantidade']);
         }
+
+        return json_encode(["mensagem"=> "Venda criada com sucesso!"]);
+
     }
 
     /**
@@ -70,9 +73,9 @@ class VendaController extends Controller
         
         $desconto = $this->calculaDesconto($request->input('formaDePagamento'), $totalDoPedido);
 
-        return Venda::findOrFail($id)->update([
+        Venda::findOrFail($id)->update([
             'dataDaVenda' => $request->input('dataDaVenda'),
-            'variacoesDosProdutos' => $request->input('variacoesDosProdutos'),
+            'variacoesDosProdutos' => $itensDoPedido,
             'valorTotal' => round($totalDoPedido - $desconto, 2),
             'valorDoFrete' => $valorDoFrete,
             'desconto' => $desconto,
@@ -86,6 +89,9 @@ class VendaController extends Controller
 
             $this->atualizaEstoque($estoque, $item['quantidade']);
         }
+
+        return json_encode(["mensagem"=> "Venda modificada com sucesso!"]);
+
     }
 
     /**
@@ -93,7 +99,10 @@ class VendaController extends Controller
      */
     public function destroy(string $id)
     {
-        return Venda::destroy($id);
+        Venda::destroy($id);
+
+        return json_encode(["mensagem"=> "Venda deletada com sucesso!"]);
+
     }
 
     private function calculaDesconto(string $formaDePagamento, float $totalDaCompra): float

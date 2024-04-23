@@ -20,10 +20,12 @@ class CategoriaController extends Controller
      */
     public function store(CategoriaRequest $request)
     {
-        return Categoria::create([
+        Categoria::create([
             'nome' => $request->input('nome'),
             'descricao' => $request->input('descricao')
         ]);
+        return json_encode(["mensagem"=> "Categoria criada com sucesso!"]);
+
     }
 
     /**
@@ -39,10 +41,11 @@ class CategoriaController extends Controller
      */
     public function update(CategoriaRequest $request, string $id)
     {
-        return Categoria::findOrFail($id)->update([
+        Categoria::findOrFail($id)->update([
             'nome' => $request->input('nome'),
             'descricao' => $request->input('descricao'),
         ]);
+        return json_encode(["mensagem"=> "Categoria modificada com sucesso!"]);
     }
 
     /**
@@ -50,6 +53,9 @@ class CategoriaController extends Controller
      */
     public function destroy(string $id)
     {
-        return Categoria::destroy($id);
+        Categoria::destroy($id);
+
+        return json_encode(["mensagem"=> "Categoria deletada com sucesso!"]);
+
     }
 }

@@ -21,11 +21,14 @@ class ClienteController extends Controller
      */
     public function store(ClienteRequest $request)
     {
-        return Cliente::create([
+        Cliente::create([
             'nomeCompleto' => $request->input('nomeCompleto'),
             'cpf' => $request->input('cpf'),
             'dataDeNascimento' => $request->input('dataDeNascimento'),
         ]);;
+
+        return json_encode(["mensagem"=> "Cliente criado com sucesso!"]);
+
     }
 
     /**
@@ -41,11 +44,14 @@ class ClienteController extends Controller
      */
     public function update(ClienteRequest $request, string $id)
     {
-        return Cliente::findOrFail($id)->update([
+        Cliente::findOrFail($id)->update([
             'nomeCompleto' => $request->input('nomeCompleto'),
             'cpf' => $request->input('cpf'),
             'dataDeNascimento' => $request->input('dataDeNascimento'),
         ]);
+
+        return json_encode(["mensagem"=> "Cliente modificado com sucesso!"]);
+
     }
 
     /**
@@ -53,6 +59,9 @@ class ClienteController extends Controller
      */
     public function destroy(string $id)
     {
-        return Cliente::destroy($id);
+        Cliente::destroy($id);
+
+        return json_encode(["mensagem"=> "Cliente deletado com sucesso!"]);
+
     }
 }

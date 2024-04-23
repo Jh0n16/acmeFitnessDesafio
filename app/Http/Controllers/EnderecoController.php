@@ -21,7 +21,7 @@ class EnderecoController extends Controller
      */
     public function store(EnderecoRequest $request)
     {
-        return Endereco::create([
+        Endereco::create([
             'logradouro' => $request->input('logradouro'),
             'cidade' => $request->input('cidade'),
             'bairro' => $request->input('bairro'),
@@ -30,6 +30,9 @@ class EnderecoController extends Controller
             'complemento' => $request->input('complemento'),
             'cliente_id' => $request->input('cliente_id')
         ]);
+
+        return json_encode(["mensagem"=> "Endereço criado com sucesso!"]);
+
     }
 
     /**
@@ -45,7 +48,7 @@ class EnderecoController extends Controller
      */
     public function update(EnderecoRequest $request, string $id)
     {
-        return Endereco::findOrFail($id)->update([
+        Endereco::findOrFail($id)->update([
             'logradouro' => $request->input('logradouro'),
             'cidade' => $request->input('cidade'),
             'bairro' => $request->input('bairro'),
@@ -54,6 +57,9 @@ class EnderecoController extends Controller
             'complemento' => $request->input('complemento'),
             'cliente_id' => $request->input('cliente_id')
         ]);
+
+        return json_encode(["mensagem"=> "Endereço modificado com sucesso!"]);
+
     }
 
     /**
@@ -61,6 +67,9 @@ class EnderecoController extends Controller
      */
     public function destroy(string $id)
     {
-        return Endereco::destroy($id);
+        Endereco::destroy($id);
+
+        return json_encode(["mensagem"=> "Endereço deletado com sucesso!"]);
+
     }
 }
