@@ -34,4 +34,9 @@ class Venda extends Model
         return $this->belongsTo(Endereco::class);
     }
 
+    protected function estoques(): BelongsToMany
+    {
+        return $this->belongsToMany(Estoque::class);
+    }
+
 }
