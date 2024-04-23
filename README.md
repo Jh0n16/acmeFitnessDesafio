@@ -1,66 +1,103 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+Considerações:
+    - A versão do PHP utilizada foi a 8.3 e a versão do Laravel foi a 11
+    - Utilizei um banco de dados do tipo sqlite por ser mais leve e rápido para os testes
+    - Existem factories que populam o banco de dados atomaticamente (exceto para as vendas), para ativa-las basta digitar o comando php artisan db:seed
+    - Caso o ocorra algum erro com o banco de dados basta digitar o comando php artisan migrate:fresh para zerar o banco
+    - Para criar o banco de dados pela primeira vez basta digitar php artisan migrate
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+As rotas da API são:
+    Clientes => 
+        (GET) http://localhost:8000/api/cliente/ -> Lista todos os clientes
+        (POST) http://localhost:8000/api/cliente/ -> Adiciona novos clientes
+        (GET) http://localhost:8000/api/cliente/{id} -> Exibe somente o cliente que tenha o id igual ao passado na URL
+        (PUT) http://localhost:8000/api/cliente/{id} -> Atualiza o cliente de id igual ao que foi passado na URL
+        (DELETE) http://localhost:8000/api/cliente/{id} -> Exclui o cliente de id igual ao que foi passado na URL
+    
+    Endereços => 
+        (GET) http://localhost:8000/api/endereco/ -> Lista todos os endereços
+        (POST) http://localhost:8000/api/endereco/ -> Adiciona novos endereços
+        (GET) http://localhost:8000/api/endereco/{id} -> Exibe somente o endereço que tenha o id igual ao passado na URL
+        (PUT) http://localhost:8000/api/endereco/{id} -> Atualiza o endereço de id igual ao que foi passado na URL
+        (DELETE) http://localhost:8000/api/endereco/{id} -> Exclui o endereço de id igual ao que foi passado na URL
+    
+    Categorias => 
+        (GET) http://localhost:8000/api/categoria/ -> Lista todas as categorias
+        (POST) http://localhost:8000/api/categoria/ -> Adiciona novas categorias
+        (GET) http://localhost:8000/api/categoria/{id} -> Exibe somente a categoria que tenha o id igual ao passado na URL
+        (PUT) http://localhost:8000/api/categoria/{id} -> Atualiza a categoria de id igual ao que foi passado na URL
+        (DELETE) http://localhost:8000/api/categoria/{id} -> Exclui a categoria de id igual ao que foi passado na URL
+    
+    Produtos => 
+        (GET) http://localhost:8000/api/produto/ -> Lista todos os produtos
+        (POST) http://localhost:8000/api/produto/ -> Adiciona novos produtos
+        (GET) http://localhost:8000/api/produto/{id} -> Exibe somente o produto que tenha o id igual ao passado na URL
+        (PUT) http://localhost:8000/api/produto/{id} -> Atualiza o produto de id igual ao que foi passado na URL
+        (DELETE) http://localhost:8000/api/produto/{id} -> Exclui o produto de id igual ao que foi passado na URL
+    
+    Estoques => 
+        (GET) http://localhost:8000/api/estoque/ -> Lista todos os estoques
+        (POST) http://localhost:8000/api/estoque/ -> Adiciona novos estoques
+        (GET) http://localhost:8000/api/estoque/{id} -> Exibe somente o estoque que tenha o id igual ao passado na URL
+        (PUT) http://localhost:8000/api/estoque/{id} -> Atualiza o estoque de id igual ao que foi passado na URL
+        (DELETE) http://localhost:8000/api/estoque/{id} -> Exclui o estoque de id igual ao que foi passado na URL
+    
+    Vendas => 
+        (GET) http://localhost:8000/api/venda/ -> Lista todas as vendas
+        (POST) http://localhost:8000/api/venda/ -> Adiciona novas vendas
+        (GET) http://localhost:8000/api/venda/{id} -> Exibe somente a venda que tenha o id igual ao passado na URL
+        (PUT) http://localhost:8000/api/venda/{id} -> Atualiza a venda de id igual ao que foi passado na URL
+        (DELETE) http://localhost:8000/api/venda/{id} -> Exclui a venda de id igual ao que foi passado na URL
+        (GET) http://localhost:8000/api/produtosMaisVendidos/ -> Lista os produtos mais vendidos
 
-## About Laravel
+Os campos esperados nas rotas POST e PUT são:
+    Clientes =>
+        'nomeCompleto' -> String
+        'cpf' -> String
+        'dataDeNascimento' -> Data no formato: Y-m-d
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+    Endereços =>
+        'logradouro' -> String
+        'cidade' -> String
+        'bairro' -> String
+        'numero' -> Inteiro
+        'cep' -> String
+        'complemento' -> String
+        'cliente_id' -> Primary Key da tabela clientes
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+    Categorias =>
+        'nome' -> String
+        'descricao' -> String
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+    Produtos =>
+        'nome' -> String
+        'cor' -> String
+        'imagem' -> Binary
+        'preco' -> Float
+        'descricao' -> String
+        'peso' -> Float
+        'categoria_id' -> Primary Key da tabela categorias
 
-## Learning Laravel
+    Estoques =>
+        'tamanho' -> Inteiro
+        'precoDeVenda' -> Float
+        'quantidadeDoEstoque' -> Inteiro
+        'produto_id' -> Primary Key da tabela produtos
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
-
-You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
-
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
-
-## Laravel Sponsors
-
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
-
-### Premium Partners
-
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[WebReinvent](https://webreinvent.com/)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Jump24](https://jump24.co.uk)**
-- **[Redberry](https://redberry.international/laravel/)**
-- **[Active Logic](https://activelogic.com)**
-- **[byte5](https://byte5.de)**
-- **[OP.GG](https://op.gg)**
-
-## Contributing
-
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
-
-## Code of Conduct
-
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
-
-## Security Vulnerabilities
-
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
-
-## License
-
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+    Vendas =>
+        'dataDaVenda' -> Data no formato: Y-m-d
+        'variacoesDosProdutos' -> JSON semelhante a esse:
+            {
+                "item": {
+                    "estoque_id": 1,
+                    "precoDeVenda": 12.99,
+                    "quantidade": 5
+                },
+                "item2": {
+                    "estoque_id": 5,
+                    "precoDeVenda": 19.99,
+                    "quantidade": 10
+                }
+            }
+        'formaDePagamento' -> Um dos seguintes valores: "pix", "boleto" ou "cartao"
+        'cliente_id' -> Primary Key da tabela clientes
+        'endereco_id' -> Primary Key da tabela enderecos
