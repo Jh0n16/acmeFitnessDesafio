@@ -104,6 +104,15 @@ class VendaController extends Controller
 
     }
 
+    public function produtosMaisVendidos()
+    {
+        return EstoqueVenda::join('estoques', 'estoque_id', '=', 'estoques.id')
+                ->join('produtos', 'produto_id', '=', 'produtos.id')
+                ->select('produtos.*')
+                ->orderBy('produtos.id')
+                ->get();
+    }
+
     private function calculaDesconto(string $formaDePagamento, float $totalDaCompra): float
     {
         switch ($formaDePagamento) {

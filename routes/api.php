@@ -56,4 +56,4 @@ Route::put('venda/{venda}', [VendaController::class, 'update'])->name('venda.upd
 Route::delete('venda/{venda}', [VendaController::class, 'destroy'])->name('venda.destroy');
 
 // Mais Vendidos
-route::get('maisVendidos/', []);
+route::get('produtosMaisVendidos/', [VendaController::class, 'produtosMaisVendidos'])->name('venda.produtosMaisVendidos');
