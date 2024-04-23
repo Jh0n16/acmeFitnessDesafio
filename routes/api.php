@@ -5,6 +5,7 @@ use App\Http\Controllers\ClienteController;
 use App\Http\Controllers\EnderecoController;
 use App\Http\Controllers\EstoqueController;
 use App\Http\Controllers\ProdutoController;
+use App\Http\Controllers\VendaController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -46,3 +47,13 @@ Route::post('estoque/', [EstoqueController::class, 'store'])->name('estoque.stor
 Route::get('estoque/{estoque}', [EstoqueController::class, 'show'])->name('estoque.show');
 Route::put('estoque/{estoque}', [EstoqueController::class, 'update'])->name('estoque.update');
 Route::delete('estoque/{estoque}', [EstoqueController::class, 'destroy'])->name('estoque.destroy');
+
+// Vendas
+Route::get('venda/', [VendaController::class, 'index'])->name('venda.index');
+Route::post('venda/', [VendaController::class, 'store'])->name('venda.store');
+Route::get('venda/{venda}', [VendaController::class, 'show'])->name('venda.show');
+Route::put('venda/{venda}', [VendaController::class, 'update'])->name('venda.update');
+Route::delete('venda/{venda}', [VendaController::class, 'destroy'])->name('venda.destroy');
+
+// Mais Vendidos
+route::get('maisVendidos/', []);
