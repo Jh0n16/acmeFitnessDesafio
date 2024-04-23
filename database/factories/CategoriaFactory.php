@@ -18,7 +18,7 @@ class CategoriaFactory extends Factory
     {
         return [
             'nome' => $this->faker->word(),
-            'descricao' => $this->faker->text()
+            'descricao' => $this->faker->text(32)
         ];
     }
 }
