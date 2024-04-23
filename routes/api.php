@@ -20,7 +20,7 @@ Route::get('cliente/{cliente}', [ClienteController::class, 'show'])->name('clien
 Route::put('cliente/{cliente}', [ClienteController::class, 'update'])->name('cliente.update');
 Route::delete('cliente/{cliente}', [ClienteController::class, 'destroy'])->name('cliente.destroy');
 
-// Enderecos
+// Endereços
 Route::get('endereco/', [EnderecoController::class, 'index'])->name('endereco.index');
 Route::post('endereco/', [EnderecoController::class, 'store'])->name('endereco.store');
 Route::get('endereco/{endereco}', [EnderecoController::class, 'show'])->name('endereco.show');
